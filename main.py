@@ -9,6 +9,7 @@ from bolinha4 import Bolinha4
 from backgroud import Backgroud
 from fantasma import Fantasma
 from chave import Chave
+from porta import Porta
 
 
 #pygame.mixer.pre_init(44100, 16, 2, 512)
@@ -25,10 +26,10 @@ bolinha1Group = pygame.sprite.Group()
 bolinha2Group = pygame.sprite.Group()
 bolinha3Group = pygame.sprite.Group()
 bolinha4Group = pygame.sprite.Group()
-
 playerGroup = pygame.sprite.Group()
 fantasmaGroup = pygame.sprite.Group()
 chaveGroup = pygame.sprite.Group()
+portaGroup = pygame.sprite.Group()
 
 
 
@@ -36,6 +37,7 @@ chaveGroup = pygame.sprite.Group()
 player = Player(playerGroup)
 fantasma = Fantasma(player, fantasmaGroup)
 bg = Backgroud(mapGroup)
+porta = Porta(portaGroup)
 
 chaves1 = Chave(objectGroup, chaveGroup)
 chaves1.rect.x = 40
@@ -111,7 +113,7 @@ if __name__ == "__main__":
             playery = player.rect.y
 
         chavecolission = pygame.sprite.spritecollide(player, chaveGroup, False, pygame.sprite.collide_mask)
-        if collisions:
+        if chavecolission:
             chaves1.kill()
             quantchave -= 0
             #print(quantchave)
@@ -119,8 +121,12 @@ if __name__ == "__main__":
         if quantchave == 0:
             passarporta = True
 
-        if passarporta == True:
-            print("Parabens voce zerou o jogo")
+        portacolission = pygame.sprite.spritecollide(player, portaGroup, False, pygame.sprite.collide_mask)
+        if portacolission:
+            if passarporta == True:
+                print("Parabens voce zerou o jogo")
+            else:
+                print("quantidade de chave insuficiente")
 
         # Update Logic
         objectGroup.update()
@@ -128,6 +134,7 @@ if __name__ == "__main__":
         playerGroup.update()
         fantasmaGroup.update()
         chaveGroup.update()
+        portaGroup.update()
 
 
 
@@ -144,5 +151,8 @@ if __name__ == "__main__":
             mapGroup.draw(display)
             fantasmaGroup.draw(display)
             playerGroup.draw(display)
+            chaveGroup.draw(display)
+            portaGroup.draw(display)
+
             objectGroup.draw(display)
         pygame.display.update()

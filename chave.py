@@ -5,7 +5,7 @@ class Chave(pygame.sprite.Sprite):
         super().__init__(*groups)
 
         self.image = pygame.image.load("data/chave.png")
-        self.image = pygame.transform.scale(self.image, [5, 3])  # escalar dde acordo com o display
+        self.image = pygame.transform.scale(self.image, [10, 6])  # escalar dde acordo com o display
         self.rect = self.image.get_rect()
 
 
