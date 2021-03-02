@@ -74,6 +74,7 @@ visao = False
 
 clock = pygame.time.Clock()
 if __name__ == "__main__":
+
         while gameLoop:
             while gameLoopTela:
                 clock.tick(60)
