@@ -3,8 +3,6 @@ from player import Player
 
 class Fantasma(pygame.sprite.Sprite):
 
-
-
     def __init__(self, player, *groups):
         super().__init__(*groups)
 
@@ -18,9 +16,6 @@ class Fantasma(pygame.sprite.Sprite):
 
     # Logica
     def update(self, *args):
-
-
-        #print("x -> ", self.player.rect.x, " y -> ", self.player.rect.y)
 
         if self.rect.top < 20:
             self.rect.top = 20

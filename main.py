@@ -29,10 +29,7 @@ fantasmaGroup = pygame.sprite.Group()
 
 
 
-
-# background
-
-
+# criando
 player = Player(playerGroup)
 fantasma = Fantasma(player, fantasmaGroup)
 bg = Backgroud(mapGroup)
@@ -60,19 +57,19 @@ if __name__ == "__main__":
                     visao = True
 
                 if event.key == pygame.K_UP:
-                    newBolinha1 = Bolinha1(objectGroup, bolinha1Group)
+                    newBolinha1 = Bolinha1(player, objectGroup, bolinha1Group)
                     newBolinha1.rect.center = player.rect.center
 
                 if event.key == pygame.K_LEFT:
-                    newBolinha2 = Bolinha2(objectGroup, bolinha2Group)
+                    newBolinha2 = Bolinha2(player, objectGroup,bolinha2Group)
                     newBolinha2.rect.center = player.rect.center
 
                 if event.key == pygame.K_RIGHT:
-                    newBolinha3 = Bolinha3(objectGroup, bolinha3Group)
+                    newBolinha3 = Bolinha3(player, objectGroup, bolinha3Group)
                     newBolinha3.rect.center = player.rect.center
 
                 if event.key == pygame.K_DOWN:
-                    newBolinha4 = Bolinha4(objectGroup, bolinha4Group)
+                    newBolinha4 = Bolinha4(player, objectGroup, bolinha4Group)
                     newBolinha4.rect.center = player.rect.center
 
 

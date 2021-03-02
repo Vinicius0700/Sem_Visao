@@ -42,22 +42,13 @@ class Player(pygame.sprite.Sprite):
            self.rect.y += 2
 
         if keys[pygame.K_a] or keys[pygame.K_s] or keys[pygame.K_d] or keys[pygame.K_w]:
-            if self.aux % 30 == 0:
+            if self.aux % 12 == 0:
                 self.walk1.play(self.walk)
                 self.aux += 1
             else:
                 self.aux += 1
         else:
             self.aux = 0
-
-
-        if self.aux >= 200:
-            pygame.mixer.unpause()
-            self.aux = 0
-
-        else:
-            pygame.mixer.unpause()
-
 
         if self.rect.top < 20:
             self.rect.top = 20
