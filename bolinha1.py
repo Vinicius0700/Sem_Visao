@@ -2,7 +2,7 @@ import pygame
 from player import Player
 
 class Bolinha1(pygame.sprite.Sprite):
-    def __init__(self, *groups):
+    def __init__(self,  *groups):
         super().__init__(*groups)
 
         self.player = Player()

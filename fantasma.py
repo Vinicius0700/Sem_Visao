@@ -5,10 +5,10 @@ class Fantasma(pygame.sprite.Sprite):
 
 
 
-    def __init__(self, *groups):
+    def __init__(self, player, *groups):
         super().__init__(*groups)
 
-        self.player = Player()
+        self.player = player
 
         self.image = pygame.image.load("data/fantasma.png")
         self.image = pygame.transform.scale(self.image, [6, 10])  # escalar dde acordo com o display
@@ -19,8 +19,8 @@ class Fantasma(pygame.sprite.Sprite):
     # Logica
     def update(self, *args):
 
-        self.player = Player()
-        print("x -> ", self.player.rect.x, " y -> ", self.player.rect.y)
+
+        #print("x -> ", self.player.rect.x, " y -> ", self.player.rect.y)
 
         if self.rect.top < 20:
             self.rect.top = 20

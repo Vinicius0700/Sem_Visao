@@ -24,8 +24,8 @@ bolinha2Group = pygame.sprite.Group()
 bolinha3Group = pygame.sprite.Group()
 bolinha4Group = pygame.sprite.Group()
 mapGroup = pygame.sprite.Group()
-fantasma = Fantasma(objectGroup)
 playerGroup = pygame.sprite.Group()
+
 
 
 
@@ -33,6 +33,7 @@ playerGroup = pygame.sprite.Group()
 
 
 player = Player(objectGroup)
+fantasma = Fantasma(player, objectGroup)
 bg = Backgroud(objectGroup)
 
 # music
@@ -82,8 +83,8 @@ if __name__ == "__main__":
         collisions = pygame.sprite.spritecollide(player, mapGroup, True, pygame.sprite.collide_mask)
 
 
-        if collisions:
-            print("parou")
+        print(collisions)
+
 
 
         hits1 = pygame.sprite.groupcollide(bolinha1Group, mapGroup, True, False, pygame.sprite.collide_mask)
