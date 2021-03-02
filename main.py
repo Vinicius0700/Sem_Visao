@@ -103,11 +103,10 @@ if __name__ == "__main__":
 
 
         collisions = pygame.sprite.spritecollide(player, mapGroup, False, pygame.sprite.collide_mask)
+
         if collisions:
             player.rect.x = playerx
             player.rect.y = playery
-
-
         else:
             playerx = player.rect.x
             playery = player.rect.y
@@ -123,10 +122,16 @@ if __name__ == "__main__":
 
         portacolission = pygame.sprite.spritecollide(player, portaGroup, False, pygame.sprite.collide_mask)
         if portacolission:
+            player.rect.y = playery -3
             if passarporta == True:
                 print("Parabens voce zerou o jogo")
-            else:
+            elif passarporta == False:
                 print("quantidade de chave insuficiente")
+
+        fantasmacolission = pygame.sprite.spritecollide(player, fantasmaGroup, False, pygame.sprite.collide_mask)
+        if fantasmacolission:
+            print("Game over")
+
 
         # Update Logic
         objectGroup.update()

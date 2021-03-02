@@ -28,7 +28,7 @@ class Player(pygame.sprite.Sprite):
 
         keys = pygame.key.get_pressed()
 
-        print("x -> ", self.rect.x, " y -> ", self.rect.y)
+        #print("x -> ", self.rect.x, " y -> ", self.rect.y)
 
         if keys[pygame.K_d]:
             self.rect.x += 2
