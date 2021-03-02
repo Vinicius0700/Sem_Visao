@@ -16,6 +16,10 @@ class Bolinha1(pygame.sprite.Sprite):
         self.speed = 4
         self.aux = 0
 
+        self.bolinha = pygame.mixer.Sound("data/Bolinha.wav")
+        self.bolinha1 = pygame.mixer.Channel(1)
+        self.bolinha1.set_volume(self.volume)
+
     def update(self, *args):
         self.rect.y -= self.speed
 
@@ -23,9 +27,7 @@ class Bolinha1(pygame.sprite.Sprite):
         self.volume = 1 - (self.distancia / 500)
         print(self.distancia)
 
-        self.bolinha = pygame.mixer.Sound("data/Bolinha.wav")
-        self.bolinha1 = pygame.mixer.Channel(1)
-        self.bolinha1.set_volume(self.volume)
+
 
         if self.kill != self.bolinha1:
             if self.aux % 12 == 0:
@@ -33,7 +35,6 @@ class Bolinha1(pygame.sprite.Sprite):
                 self.aux += 1
             else:
                 self.aux += 1
-
 
 
 #provisorio em quanto não tem colião

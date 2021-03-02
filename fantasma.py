@@ -14,8 +14,29 @@ class Fantasma(pygame.sprite.Sprite):
         self.rect.x = 810
         self.rect.y = 650
 
+        self.aux = 0
+
+        self.fantasm = pygame.mixer.Sound("data/fantasma.mp3")
+        self.fantasma1 = pygame.mixer.Channel(1)
+
+
     # Logica
     def update(self, *args):
+
+        self.volume_w = 0.3
+        self.volume_l = 0.3
+        self.fantasma1.set_volume(self.volume_l, self.volume_w)
+
+        if self.aux % 30 == 0:
+            self.fantasma1.play(self.fantasm)
+            self.aux += 1
+        else:
+            if self.aux >= 500:
+                self.aux = 0
+            self.aux += 1
+
+
+        #pygame.mixer.unpause()
 
         if self.rect.top < 20:
             self.rect.top = 20

@@ -8,6 +8,7 @@ from bolinha3 import Bolinha3
 from bolinha4 import Bolinha4
 from backgroud import Backgroud
 from fantasma import Fantasma
+from chave import Chave
 
 
 #pygame.mixer.pre_init(44100, 16, 2, 512)
@@ -24,8 +25,10 @@ bolinha1Group = pygame.sprite.Group()
 bolinha2Group = pygame.sprite.Group()
 bolinha3Group = pygame.sprite.Group()
 bolinha4Group = pygame.sprite.Group()
+
 playerGroup = pygame.sprite.Group()
 fantasmaGroup = pygame.sprite.Group()
+chaveGroup = pygame.sprite.Group()
 
 
 
@@ -34,12 +37,34 @@ player = Player(playerGroup)
 fantasma = Fantasma(player, fantasmaGroup)
 bg = Backgroud(mapGroup)
 
+chaves1 = Chave(objectGroup, chaveGroup)
+chaves1.rect.x = 40
+chaves1.rect.y = 30
+
+chaves2 = Chave(objectGroup, chaveGroup)
+chaves2.rect.x = 48
+chaves2.rect.y = 362
+
+chaves3 = Chave(objectGroup, chaveGroup)
+chaves3.rect.x = 564
+chaves3.rect.y = 542
+
+chaves4 = Chave(objectGroup, chaveGroup)
+chaves4.rect.x = 700
+chaves4.rect.y = 185
+
 # music
 musicFundo = pygame.mixer.music.load("data/MusicFundo.ogg")
 pygame.mixer.music.play(-1, 0.0, 5000)
 
 # sounds
 
+# variaveis auxiliares
+
+playerx = player.rect.x
+playery = player.rect.y
+quantchave = 4
+passarporta = False
 
 gameLoop = True # variavel que define se o jogo vai continuar rodando ou não
 visao = False
@@ -49,7 +74,9 @@ if __name__ == "__main__":
     while gameLoop:
         clock.tick(60)
 
+
         for event in pygame.event.get():
+
             if event.type == pygame.QUIT:
                 gameLoop = False
             elif event.type == pygame.KEYDOWN:
@@ -73,19 +100,34 @@ if __name__ == "__main__":
                     newBolinha4.rect.center = player.rect.center
 
 
+        collisions = pygame.sprite.spritecollide(player, mapGroup, False, pygame.sprite.collide_mask)
+        if collisions:
+            player.rect.x = playerx
+            player.rect.y = playery
 
+
+        else:
+            playerx = player.rect.x
+            playery = player.rect.y
+
+        chavecolission = pygame.sprite.spritecollide(player, chaveGroup, False, pygame.sprite.collide_mask)
+        if collisions:
+            chaves1.kill()
+            quantchave -= 0
+            #print(quantchave)
+
+        if quantchave == 0:
+            passarporta = True
+
+        if passarporta == True:
+            print("Parabens voce zerou o jogo")
 
         # Update Logic
         objectGroup.update()
         mapGroup.update()
         playerGroup.update()
         fantasmaGroup.update()
-
-        collisions = pygame.sprite.spritecollide(player, mapGroup, False, pygame.sprite.collide_mask)
-
-
-        if collisions:
-            print("parou")
+        chaveGroup.update()
 
 
 

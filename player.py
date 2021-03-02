@@ -25,9 +25,10 @@ class Player(pygame.sprite.Sprite):
     def update(self, *args):
         self.time.tick(60)
 
+
         keys = pygame.key.get_pressed()
 
-        #print("x -> ", self.rect.x, " y -> ", self.rect.y)
+        print("x -> ", self.rect.x, " y -> ", self.rect.y)
 
         if keys[pygame.K_d]:
             self.rect.x += 2
