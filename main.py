@@ -19,12 +19,13 @@ pygame.display.set_caption("Joguinho do Vini") # Legenda do jogo
 
 #Groups
 objectGroup = pygame.sprite.Group()
+mapGroup = pygame.sprite.Group()
 bolinha1Group = pygame.sprite.Group()
 bolinha2Group = pygame.sprite.Group()
 bolinha3Group = pygame.sprite.Group()
 bolinha4Group = pygame.sprite.Group()
-mapGroup = pygame.sprite.Group()
 playerGroup = pygame.sprite.Group()
+fantasmaGroup = pygame.sprite.Group()
 
 
 
@@ -32,9 +33,9 @@ playerGroup = pygame.sprite.Group()
 # background
 
 
-player = Player(objectGroup)
-fantasma = Fantasma(player, objectGroup)
-bg = Backgroud(objectGroup)
+player = Player(playerGroup)
+fantasma = Fantasma(player, fantasmaGroup)
+bg = Backgroud(mapGroup)
 
 # music
 musicFundo = pygame.mixer.music.load("data/MusicFundo.ogg")
@@ -79,11 +80,15 @@ if __name__ == "__main__":
 
         # Update Logic
         objectGroup.update()
+        mapGroup.update()
+        playerGroup.update()
+        fantasmaGroup.update()
 
-        collisions = pygame.sprite.spritecollide(player, mapGroup, True, pygame.sprite.collide_mask)
+        collisions = pygame.sprite.spritecollide(player, mapGroup, False, pygame.sprite.collide_mask)
 
 
-        print(collisions)
+        if collisions:
+            print("parou")
 
 
 
@@ -97,5 +102,8 @@ if __name__ == "__main__":
         # Draw:
         display.fill([40, 40, 40])
         if visao:
+            mapGroup.draw(display)
+            fantasmaGroup.draw(display)
+            playerGroup.draw(display)
             objectGroup.draw(display)
         pygame.display.update()
