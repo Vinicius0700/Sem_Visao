@@ -68,23 +68,23 @@ def criaObject ():
     # sounds
 
     ai = pygame.mixer.Sound("data/ai.wav")
-    ai1 = pygame.mixer.Channel(1)
+    ai1 = pygame.mixer.Channel(0)
     ai1.set_volume(1)
 
     chave_insuficiente = pygame.mixer.Sound("data/chaveInsuficiente.wav")
-    chave_insuficiente1 = pygame.mixer.Channel(1)
+    chave_insuficiente1 = pygame.mixer.Channel(0)
     chave_insuficiente1.set_volume(1)
 
     fugir = pygame.mixer.Sound("data/fugiu.wav")
-    fugir1 = pygame.mixer.Channel(1)
+    fugir1 = pygame.mixer.Channel(0)
     fugir1.set_volume(1)
 
     introducao = pygame.mixer.Sound("data/introducao.wav")
-    introducao1 = pygame.mixer.Channel(1)
+    introducao1 = pygame.mixer.Channel(0)
     introducao1.set_volume(1)
 
     gameover = pygame.mixer.Sound("data/gameover.wav")
-    gameover1 = pygame.mixer.Channel(1)
+    gameover1 = pygame.mixer.Channel(0)
     gameover1.set_volume(1)
 
     # variaveis auxiliares
