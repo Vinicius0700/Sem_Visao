@@ -29,12 +29,11 @@ class Bolinha1(pygame.sprite.Sprite):
 
 
 
-        if self.kill != self.bolinha1:
-            if self.aux % 12 == 0:
-                self.bolinha1.play(self.bolinha)
-                self.aux += 1
-            else:
-                self.aux += 1
+        if self.aux % 12 == 0:
+            self.bolinha1.play(self.bolinha)
+            self.aux += 1
+        else:
+            self.aux += 1
 
 
 #provisorio em quanto não tem colião

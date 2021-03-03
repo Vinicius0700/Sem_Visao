@@ -31,16 +31,16 @@ class Player(pygame.sprite.Sprite):
         #print("x -> ", self.rect.x, " y -> ", self.rect.y)
 
         if keys[pygame.K_d]:
-            self.rect.x += 2
+            self.rect.x += 8
 
         if keys[pygame.K_a]:
-           self.rect.x -= 2
+           self.rect.x -= 8
 
         if keys[pygame.K_w]:
-           self.rect.y -= 2
+           self.rect.y -= 8
 
         if keys[pygame.K_s]:
-           self.rect.y += 2
+           self.rect.y += 8
 
         if keys[pygame.K_a] or keys[pygame.K_s] or keys[pygame.K_d] or keys[pygame.K_w]:
             if self.aux % 12 == 0:

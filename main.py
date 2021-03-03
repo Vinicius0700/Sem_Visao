@@ -33,7 +33,10 @@ def criaObject ():
     bolinha4Group = pygame.sprite.Group()
     playerGroup = pygame.sprite.Group()
     fantasmaGroup = pygame.sprite.Group()
-    chaveGroup = pygame.sprite.Group()
+    chave1Group = pygame.sprite.Group()
+    chave2Group = pygame.sprite.Group()
+    chave3Group = pygame.sprite.Group()
+    chave4Group = pygame.sprite.Group()
     portaGroup = pygame.sprite.Group()
 
 
@@ -42,19 +45,19 @@ def criaObject ():
     bg = Backgroud(mapGroup)
     porta = Porta(portaGroup)
 
-    chaves1 = Chave(objectGroup, chaveGroup)
+    chaves1 = Chave(objectGroup, chave1Group)
     chaves1.rect.x = 40
     chaves1.rect.y = 30
 
-    chaves2 = Chave(objectGroup, chaveGroup)
+    chaves2 = Chave(objectGroup, chave2Group)
     chaves2.rect.x = 48
     chaves2.rect.y = 362
 
-    chaves3 = Chave(objectGroup, chaveGroup)
+    chaves3 = Chave(objectGroup, chave3Group)
     chaves3.rect.x = 564
     chaves3.rect.y = 542
 
-    chaves4 = Chave(objectGroup, chaveGroup)
+    chaves4 = Chave(objectGroup, chave4Group)
     chaves4.rect.x = 700
     chaves4.rect.y = 185
 
@@ -63,6 +66,7 @@ def criaObject ():
     pygame.mixer.music.play(-1, 0.0, 5000)
 
     # sounds
+
     ai = pygame.mixer.Sound("data/ai.wav")
     ai1 = pygame.mixer.Channel(1)
     ai1.set_volume(1)
@@ -134,11 +138,25 @@ def criaObject ():
             playerx = player.rect.x
             playery = player.rect.y
 
-        chavecolission = pygame.sprite.spritecollide(player, chaveGroup, False, pygame.sprite.collide_mask)
-        if chavecolission:
+        chave1colission = pygame.sprite.spritecollide(player, chave1Group, False, pygame.sprite.collide_mask)
+        if chave1colission:
             chaves1.kill()
-            quantchave -= 0
-            # print(quantchave)
+            quantchave -= 1
+
+        chave2colission = pygame.sprite.spritecollide(player, chave2Group, False, pygame.sprite.collide_mask)
+        if chave2colission:
+            chaves2.kill()
+            quantchave -= 1
+
+        chave3colission = pygame.sprite.spritecollide(player, chave3Group, False, pygame.sprite.collide_mask)
+        if chave3colission:
+            chaves3.kill()
+            quantchave -= 1
+
+        chave4colission = pygame.sprite.spritecollide(player, chave4Group, False, pygame.sprite.collide_mask)
+        if chave4colission:
+            chaves4.kill()
+            quantchave -= 1
 
         if quantchave == 0:
             passarporta = True
@@ -148,6 +166,7 @@ def criaObject ():
             player.rect.y = playery - 3
             if passarporta == True:
                 fugir1.play(fugir)
+                gameLoopTela = False
                 #print("Parabens voce zerou o jogo")
             elif passarporta == False:
                 chave_insuficiente1.play(chave_insuficiente)
@@ -164,7 +183,10 @@ def criaObject ():
         mapGroup.update()
         playerGroup.update()
         fantasmaGroup.update()
-        chaveGroup.update()
+        chave1Group.update()
+        chave2Group.update()
+        chave3Group.update()
+        chave4Group.update()
         portaGroup.update()
 
         hits1 = pygame.sprite.groupcollide(bolinha1Group, mapGroup, True, False, pygame.sprite.collide_mask)
@@ -178,7 +200,10 @@ def criaObject ():
             mapGroup.draw(display)
             fantasmaGroup.draw(display)
             playerGroup.draw(display)
-            chaveGroup.draw(display)
+            chave1Group.draw(display)
+            chave2Group.draw(display)
+            chave3Group.draw(display)
+            chave4Group.draw(display)
             portaGroup.draw(display)
 
             objectGroup.draw(display)
