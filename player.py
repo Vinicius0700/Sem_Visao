@@ -9,6 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 30
         self.rect.y = 30
+        self.speed = 2
 
         self.aux = 0
         self.time = pygame.time.Clock()
@@ -31,16 +32,16 @@ class Player(pygame.sprite.Sprite):
         #print("x -> ", self.rect.x, " y -> ", self.rect.y)
 
         if keys[pygame.K_d]:
-            self.rect.x += 8
+            self.rect.x += self.speed
 
         if keys[pygame.K_a]:
-           self.rect.x -= 8
+           self.rect.x -= self.speed
 
         if keys[pygame.K_w]:
-           self.rect.y -= 8
+           self.rect.y -= self.speed
 
         if keys[pygame.K_s]:
-           self.rect.y += 8
+           self.rect.y += self.speed
 
         if keys[pygame.K_a] or keys[pygame.K_s] or keys[pygame.K_d] or keys[pygame.K_w]:
             if self.aux % 12 == 0:
