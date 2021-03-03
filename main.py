@@ -1,11 +1,6 @@
 import pygame
-import random
-from pygame import mixer
 from player import Player
 from bolinha import Bolinha
-#from bolinha2 import Bolinha2
-#from bolinha3 import Bolinha3
-#from bolinha4 import Bolinha4
 from backgroud import Backgroud
 from fantasma import Fantasma
 from chave import Chave
