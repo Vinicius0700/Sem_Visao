@@ -27,15 +27,12 @@ class Bolinha2(pygame.sprite.Sprite):
         self.bolinha1 = pygame.mixer.Channel(0)
         self.bolinha1.set_volume(self.volume, 0.0)
 
+        if self.aux % 12 == 0:
+            self.bolinha1.play(self.bolinha)
+            self.aux += 1
+        else:
+            self.aux += 1
 
-        if self.kill != self.bolinha1:
-            if self.aux % 12 == 0:
-                self.bolinha1.play(self.bolinha)
-                self.aux += 1
-            else:
-                self.aux += 1
-
-        #self.bolinha.play()
 #left
         if self.rect.x < 20 or self.volume < 0.2:
             pygame.mixer.unpause()

@@ -25,7 +25,7 @@ class Bolinha1(pygame.sprite.Sprite):
 
         self.distancia = self.player.rect.y - self.rect.y
         self.volume = 1 - (self.distancia / 500)
-        print(self.distancia)
+        #print(self.distancia)
 
 
 

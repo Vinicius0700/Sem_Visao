@@ -8,7 +8,10 @@ from bolinha3 import Bolinha3
 from bolinha4 import Bolinha4
 from backgroud import Backgroud
 from fantasma import Fantasma
-from chave import Chave
+from chave1 import Chave1
+from chave2 import Chave2
+from chave3 import Chave3
+from chave4 import Chave4
 from porta import Porta
 
 
@@ -45,21 +48,13 @@ def criaObject ():
     bg = Backgroud(mapGroup)
     porta = Porta(portaGroup)
 
-    chaves1 = Chave(objectGroup, chave1Group)
-    chaves1.rect.x = 40
-    chaves1.rect.y = 30
+    #chaves1 = Chave1(player, objectGroup, chave1Group)
 
-    chaves2 = Chave(objectGroup, chave2Group)
-    chaves2.rect.x = 48
-    chaves2.rect.y = 362
+    chaves2 = Chave2(player, objectGroup, chave2Group)
 
-    chaves3 = Chave(objectGroup, chave3Group)
-    chaves3.rect.x = 564
-    chaves3.rect.y = 542
+    #chaves3 = Chave3(player, objectGroup, chave3Group)
 
-    chaves4 = Chave(objectGroup, chave4Group)
-    chaves4.rect.x = 700
-    chaves4.rect.y = 185
+    #chaves4 = Chave4(player, objectGroup, chave4Group)
 
     # music
     musicFundo = pygame.mixer.music.load("data/MusicFundo.ogg")
@@ -140,7 +135,7 @@ def criaObject ():
 
         chave1colission = pygame.sprite.spritecollide(player, chave1Group, False, pygame.sprite.collide_mask)
         if chave1colission:
-            chaves1.kill()
+            #chaves1.kill()
             quantchave -= 1
 
         chave2colission = pygame.sprite.spritecollide(player, chave2Group, False, pygame.sprite.collide_mask)
@@ -150,12 +145,12 @@ def criaObject ():
 
         chave3colission = pygame.sprite.spritecollide(player, chave3Group, False, pygame.sprite.collide_mask)
         if chave3colission:
-            chaves3.kill()
+           # chaves3.kill()
             quantchave -= 1
 
         chave4colission = pygame.sprite.spritecollide(player, chave4Group, False, pygame.sprite.collide_mask)
         if chave4colission:
-            chaves4.kill()
+            #chaves4.kill()
             quantchave -= 1
 
         if quantchave == 0:
