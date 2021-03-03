@@ -13,30 +13,76 @@ class Fantasma(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 810
         self.rect.y = 650
+        self.distancia_x = 0
+        self.distancia_y = 0
+        self.volume = 1
+        self.speed = 1
 
         self.aux = 0
 
-        self.fantasm = pygame.mixer.Sound("data/fantasma.mp3")
-        self.fantasma1 = pygame.mixer.Channel(7)
+        self.fantasma = pygame.mixer.Sound("data/fantasma.mp3")
+        self.fantasma1 = pygame.mixer.Channel(3)
 
-
+        self.time = pygame.time.Clock()
     # Logica
     def update(self, *args):
+        self.time.tick(60)
+        self.fantasma1.set_volume(self.volume)
+        if self.aux % 300 == 0:
+            self.fantasma1.play(self.fantasma)
+        auxdistancia_x = self.distancia_x
+        auxdistancia_y = self.distancia_y
+        self.distancia_x = self.player.rect.x - self.rect.x
+        self.distancia_y = self.player.rect.y - self.rect.y
 
-        self.volume_w = 0.3
-        self.volume_l = 0.3
-        self.fantasma1.set_volume(self.volume_l, self.volume_w)
+        # pergunta se a chave esta destro do raio de alcance do som
+        if self.distancia_x < 200 and self.distancia_y < 200 and self.distancia_x > -200 and self.distancia_y > -200:
+            if self.volume >= 1:
+                self.volume = 1
 
-        if self.aux % 30 == 0:
-            self.fantasma1.play(self.fantasm)
-            self.aux += 1
+            # pergunta se esta ao Sul do objeto
+            if self.distancia_y > 0:
+
+                if auxdistancia_y > self.distancia_y:  # aproximando
+                    self.volume = 20 / self.distancia_y
+                elif auxdistancia_y < self.distancia_y:  # diminuindo
+                    self.volume = 20 / self.distancia_y
+
+            # pergunta se esta ao Norte do objeto
+            if self.distancia_y < 0:
+
+                if auxdistancia_y > self.distancia_y:  # aproximando
+                    self.volume = 20 / self.distancia_y
+                    self.volume = self.volume * (-1)
+                elif auxdistancia_y < self.distancia_y:  # diminuindo
+                    self.volume = 20 / self.distancia_y
+                    self.volume = self.volume * (-1)
+
+            # pergunta se esta ao Oeste do objeto
+            if self.distancia_x > 0:
+
+                if auxdistancia_x > self.distancia_x:  # aproximando
+                    self.volume = 20 / self.distancia_x
+                elif auxdistancia_x < self.distancia_x:  # diminuindo
+                    self.volume = 20 / self.distancia_x
+
+            # pergunta se esta ao Leste do objeto
+            if self.distancia_x < 0:
+
+                if auxdistancia_x > self.distancia_x:  # aproximando
+                    self.volume = 20 / self.distancia_x
+                    self.volume = self.volume * (-1)
+                elif auxdistancia_x < self.distancia_x:  # diminuindo
+                    self.volume = 20 / self.distancia_x
+                    self.volume = self.volume * (-1)
         else:
-            if self.aux >= 500:
-                self.aux = 0
-            self.aux += 1
+            self.volume = 0
+            pygame.mixer.pause()
+
+        # vai definir de quanto em quanto tempo o jogo vai rodar
+        self.aux += 1
 
 
-        #pygame.mixer.unpause()
 
         if self.rect.top < 20:
             self.rect.top = 20
@@ -46,14 +92,15 @@ class Fantasma(pygame.sprite.Sprite):
             self.rect.left = 20
         if self.rect.right > 800:
             self.rect.right = 800
-
-        if self.player.rect.x > self.rect.x:
-            self.rect.x += 0.1
-        if self.player.rect.y > self.rect.y:
-            self.rect.y += 0.1
-        if self.player.rect.x < self.rect.x:
-            self.rect.x -= 0.1
-        if self.player.rect.y < self.rect.y:
-            self.rect.y -= 0.1
+        #controla a velocidade dele
+        if self.aux % 3 == 0:
+            if self.player.rect.x > self.rect.x:
+                self.rect.x += 1 / self.speed
+            if self.player.rect.y > self.rect.y:
+                self.rect.y += 1 / self.speed
+            if self.player.rect.x < self.rect.x:
+                self.rect.x -=  1 / self.speed
+            if self.player.rect.y < self.rect.y:
+                self.rect.y -= 1 / self.speed
 
 

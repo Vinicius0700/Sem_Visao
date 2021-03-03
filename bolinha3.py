@@ -23,7 +23,7 @@ class Bolinha3(pygame.sprite.Sprite):
         self.volume = 0.6 - (self.distancia / 500)
 
         self.bolinha = pygame.mixer.Sound("data/Bolinha.wav")
-        self.bolinha1 = pygame.mixer.Channel(1)
+        self.bolinha1 = pygame.mixer.Channel(6)
         self.bolinha1.set_volume(0.0, self.volume)
 
         if self.aux % 12 == 0:

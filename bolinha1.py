@@ -17,7 +17,7 @@ class Bolinha1(pygame.sprite.Sprite):
         self.aux = 0
 
         self.bolinha = pygame.mixer.Sound("data/Bolinha.wav")
-        self.bolinha1 = pygame.mixer.Channel(1)
+        self.bolinha1 = pygame.mixer.Channel(4)
         self.bolinha1.set_volume(self.volume)
 
     def update(self, *args):
