@@ -63,6 +63,25 @@ def criaObject ():
     pygame.mixer.music.play(-1, 0.0, 5000)
 
     # sounds
+    ai = pygame.mixer.Sound("data/ai.wav")
+    ai1 = pygame.mixer.Channel(1)
+    ai1.set_volume(1)
+
+    chave_insuficiente = pygame.mixer.Sound("data/chaveInsuficiente.wav")
+    chave_insuficiente1 = pygame.mixer.Channel(1)
+    chave_insuficiente1.set_volume(1)
+
+    fugir = pygame.mixer.Sound("data/fugiu.wav")
+    fugir1 = pygame.mixer.Channel(1)
+    fugir1.set_volume(1)
+
+    introducao = pygame.mixer.Sound("data/introducao.wav")
+    introducao1 = pygame.mixer.Channel(1)
+    introducao1.set_volume(1)
+
+    gameover = pygame.mixer.Sound("data/gameover.wav")
+    gameover1 = pygame.mixer.Channel(1)
+    gameover1.set_volume(1)
 
     # variaveis auxiliares
 
@@ -77,6 +96,8 @@ def criaObject ():
 
     while gameLoopTela:
         clock.tick(60)
+
+        introducao1.play(introducao)
 
         for event in pygame.event.get():
 
@@ -108,6 +129,7 @@ def criaObject ():
         if collisions:
             player.rect.x = playerx
             player.rect.y = playery
+            ai1.play(ai)
         else:
             playerx = player.rect.x
             playery = player.rect.y
@@ -125,13 +147,16 @@ def criaObject ():
         if portacolission:
             player.rect.y = playery - 3
             if passarporta == True:
-                print("Parabens voce zerou o jogo")
+                fugir1.play(fugir)
+                #print("Parabens voce zerou o jogo")
             elif passarporta == False:
-                print("quantidade de chave insuficiente")
+                chave_insuficiente1.play(chave_insuficiente)
+                #print("quantidade de chave insuficiente")
 
         fantasmacolission = pygame.sprite.spritecollide(player, fantasmaGroup, False, pygame.sprite.collide_mask)
         if fantasmacolission:
-            print("Game over")
+            #print("Game over")
+            gameover1.play(gameover)
             gameLoopTela = False
 
         # Update Logic
