@@ -16,7 +16,7 @@ class Chave(pygame.sprite.Sprite):
         self.aux = 0
 
         self.chavesom = pygame.mixer.Sound("data/chaveSom.wav")
-        self.chavesom1 = pygame.mixer.Channel(2)
+        self.chavesom1 = pygame.mixer.Channel(5)
 
     def update(self, *args):
 

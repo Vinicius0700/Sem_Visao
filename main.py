@@ -2,10 +2,10 @@ import pygame
 import random
 from pygame import mixer
 from player import Player
-from bolinha1 import Bolinha1
-from bolinha2 import Bolinha2
-from bolinha3 import Bolinha3
-from bolinha4 import Bolinha4
+from bolinha import Bolinha
+#from bolinha2 import Bolinha2
+#from bolinha3 import Bolinha3
+#from bolinha4 import Bolinha4
 from backgroud import Backgroud
 from fantasma import Fantasma
 from chave import Chave
@@ -93,6 +93,7 @@ def criaObject ():
     playery = player.rect.y
     quantchave = 4
     passarporta = False
+    direcaobolinha = 0
 
     visao = False
     gameLoopTela = True
@@ -113,19 +114,23 @@ def criaObject ():
                     visao = True
 
                 if event.key == pygame.K_UP:
-                    newBolinha1 = Bolinha1(player, objectGroup, bolinha1Group)
+                    direcaobolinha = 5
+                    newBolinha1 = Bolinha(direcaobolinha, player, objectGroup, bolinha1Group)
                     newBolinha1.rect.center = player.rect.center
 
                 if event.key == pygame.K_LEFT:
-                    newBolinha2 = Bolinha2(player, objectGroup, bolinha2Group)
+                    direcaobolinha = 1
+                    newBolinha2 = Bolinha(direcaobolinha, player, objectGroup, bolinha2Group)
                     newBolinha2.rect.center = player.rect.center
 
                 if event.key == pygame.K_RIGHT:
-                    newBolinha3 = Bolinha3(player, objectGroup, bolinha3Group)
+                    direcaobolinha = 3
+                    newBolinha3 = Bolinha(direcaobolinha, player, objectGroup, bolinha3Group)
                     newBolinha3.rect.center = player.rect.center
 
                 if event.key == pygame.K_DOWN:
-                    newBolinha4 = Bolinha4(player, objectGroup, bolinha4Group)
+                    direcaobolinha = 2
+                    newBolinha4 = Bolinha(direcaobolinha, player, objectGroup, bolinha4Group)
                     newBolinha4.rect.center = player.rect.center
 
         collisions = pygame.sprite.spritecollide(player, mapGroup, False, pygame.sprite.collide_mask)

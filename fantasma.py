@@ -22,7 +22,7 @@ class Fantasma(pygame.sprite.Sprite):
         self.aux = 0
 
         self.fantasma = pygame.mixer.Sound("data/fantasma.mp3")
-        self.fantasma1 = pygame.mixer.Channel(3)
+        self.fantasma1 = pygame.mixer.Channel(6)
 
         self.time = pygame.time.Clock()
     # Logica
