@@ -18,7 +18,7 @@ class Player(pygame.sprite.Sprite):
         # walk = pygame.mixer.Sound("data/Passos.wav")
         # walk.set_volume(0.1)
         self.walk = pygame.mixer.Sound("data/Passos.wav")
-        self.walk1 = pygame.mixer.Channel(1)
+        self.walk1 = pygame.mixer.Channel(6)
         self.walk1.set_volume(0.6)
 
     # Logica

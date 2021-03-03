@@ -17,7 +17,7 @@ class Fantasma(pygame.sprite.Sprite):
         self.aux = 0
 
         self.fantasm = pygame.mixer.Sound("data/fantasma.mp3")
-        self.fantasma1 = pygame.mixer.Channel(1)
+        self.fantasma1 = pygame.mixer.Channel(7)
 
 
     # Logica
@@ -48,12 +48,12 @@ class Fantasma(pygame.sprite.Sprite):
             self.rect.right = 800
 
         if self.player.rect.x > self.rect.x:
-            self.rect.x += 1
+            self.rect.x += 0.1
         if self.player.rect.y > self.rect.y:
-            self.rect.y += 1
+            self.rect.y += 0.1
         if self.player.rect.x < self.rect.x:
-            self.rect.x -= 1
+            self.rect.x -= 0.1
         if self.player.rect.y < self.rect.y:
-            self.rect.y -= 1
+            self.rect.y -= 0.1
 
 
