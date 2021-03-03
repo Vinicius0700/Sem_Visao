@@ -30,7 +30,6 @@ class Bolinha(pygame.sprite.Sprite):
 # up
         if self.direcao == 5:
 
-            print("UP", self.volume_e)
             self.rect.y -= self.speed
             self.distancia = self.player.rect.y - self.rect.y
             self.volume_e = 1 - (self.distancia / 200)

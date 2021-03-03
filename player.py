@@ -16,8 +16,6 @@ class Player(pygame.sprite.Sprite):
 
         # sounds
 
-        # walk = pygame.mixer.Sound("data/Passos.wav")
-        # walk.set_volume(0.1)
         self.walk = pygame.mixer.Sound("data/Passos.wav")
         self.walk1 = pygame.mixer.Channel(4)
         self.walk1.set_volume(0.6)
@@ -29,6 +27,7 @@ class Player(pygame.sprite.Sprite):
 
         keys = pygame.key.get_pressed()
 
+        #caso eu precise saber a localização do player
         #print("x -> ", self.rect.x, " y -> ", self.rect.y)
 
         if keys[pygame.K_d]:

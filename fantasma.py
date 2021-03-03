@@ -30,7 +30,6 @@ class Fantasma(pygame.sprite.Sprite):
         self.time.tick(60)
         self.fantasma1.set_volume(self.volume_e, self.volume_d)
         if self.aux % 300 == 0:
-            #self.bolinha1.set_volume(self.volume_e, self.volume_d)
             self.fantasma1.play(self.fantasma)
         auxdistancia_x = self.distancia_x
         auxdistancia_y = self.distancia_y
