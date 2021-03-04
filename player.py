@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 30
         self.rect.y = 30
-        self.speed = 8
+        self.speed = 2
 
         self.aux = 0
         self.time = pygame.time.Clock()

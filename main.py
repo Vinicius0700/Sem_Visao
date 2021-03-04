@@ -313,23 +313,15 @@ def introducao ():
         pygame.display.update()
 
         for event in pygame.event.get():
-            print("oi")
             if event.type == pygame.QUIT:
                 #gameLoop = False
                 exit()
             elif event.type == pygame.KEYDOWN:
                 if (event.key == pygame.K_SPACE):
                     gameLoopTela = False
-                    print("oi")
+
 
 if __name__ == "__main__":
     while gameLoop:
         introducao()
         criaObject()
-
-
-
-#fugir = pygame.mixer.Sound("data/fugiu.wav")
-    #fugir1 = pygame.mixer.Channel(0)
-    #fugir1.set_volume(1)
-
