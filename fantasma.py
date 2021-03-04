@@ -2,7 +2,7 @@ import pygame
 from player import Player
 
 class Fantasma(pygame.sprite.Sprite):
-    #terste
+
 
     def __init__(self, player, *groups):
         super().__init__(*groups)
