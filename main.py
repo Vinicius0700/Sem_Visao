@@ -1,4 +1,5 @@
 import pygame
+import random
 from player import Player
 from bolinha import Bolinha
 from backgroud import Backgroud
@@ -63,28 +64,28 @@ def criaObject ():
     # sounds
 
     ai = pygame.mixer.Sound("data/ai.wav")
-    ai1 = pygame.mixer.Channel(2)
+    ai1 = pygame.mixer.Channel(3)
     ai1.set_volume(1)
+
+    jumpscares = pygame.mixer.Sound("data/jumpscares.mp3")
+    jumpscares1 = pygame.mixer.Channel(6)
+    jumpscares1.set_volume(1)
 
     chave_insuficiente = pygame.mixer.Sound("data/chaveInsuficiente.wav")
     chave_insuficiente1 = pygame.mixer.Channel(1)
-    chave_insuficiente1.set_volume(1)
+    chave_insuficiente1.set_volume(2)
 
     pegou = pygame.mixer.Sound("data/pegou.mp3")
     pegou1 = pygame.mixer.Channel(5)
     pegou1.set_volume(1)
 
 
-    #fugir = pygame.mixer.Sound("data/fugiu.wav")
-    #fugir1 = pygame.mixer.Channel(0)
-    #fugir1.set_volume(1)
+    fugir = pygame.mixer.Sound("data/fugiu.mp3")
+    fugir1 = pygame.mixer.Channel(0)
+    fugir1.set_volume(1)
 
-    #introducao = pygame.mixer.Sound("data/introducao.wav")
-    #introducao1 = pygame.mixer.Channel(0)
-    #introducao1.set_volume(1)
-
-    gameover = pygame.mixer.Sound("data/gameover.wav")
-    gameover1 = pygame.mixer.Channel(0)
+    gameover = pygame.mixer.Sound("data/gameover.mp3")
+    gameover1 = pygame.mixer.Channel(1)
     gameover1.set_volume(1)
 
     # variaveis auxiliares
@@ -173,17 +174,16 @@ def criaObject ():
         if portacolission:
             player.rect.y = playery - 3
             if passarporta == True:
-                #fugir1.play(fugir)
+                fugirsom()
                 gameLoopTela = False
-                print("Parabens voce zerou o jogo")
             elif passarporta == False:
                 chave_insuficiente1.play(chave_insuficiente)
-                print("quantidade de chave insuficiente")
 
         fantasmacolission = pygame.sprite.spritecollide(player, fantasmaGroup, False, pygame.sprite.collide_mask)
         if fantasmacolission:
-            #print("Game over")
-            gameover1.play(gameover)
+            fantasma.kill()
+            jumpscares1.play(jumpscares)
+            gameoversom()
             gameLoopTela = False
 
         # Update Logic
@@ -217,29 +217,110 @@ def criaObject ():
             objectGroup.draw(display)
         pygame.display.update()
 
-def introducao ():
+def fugirsom ():
 
     # music
-    musicFundo = pygame.mixer.music.load("data/introducao.wav")
+    musicFundo = pygame.mixer.music.load("data/fugiu.mp3")
     pygame.mixer.music.play(1, 0.0, 5000)
 
     gameLoopTela = True
 
     while gameLoopTela:
+        clock.tick(60)
 
-        display.fill([40, 40, 40])
+        display.fill([30, 30, 30])
+        pygame.display.update()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                #gameLoop = False
                 exit()
             elif event.type == pygame.KEYDOWN:
-                if (event.key == pygame.K_w or event.key == pygame.K_a or event.key == pygame.K_s or event.key == pygame.K_d):
+                if (event.key == pygame.K_SPACE):
                     gameLoopTela = False
 
 
 
+def gameoversom ():
 
+    # music
+    musicFundo = pygame.mixer.music.load("data/gameover.mp3")
+    pygame.mixer.music.play(1, 0.0, 5000)
+
+    gameLoopTela = True
+
+    while gameLoopTela:
+        clock.tick(60)
+
+        display.fill([30, 30, 30])
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if (event.key == pygame.K_SPACE):
+                    gameLoopTela = False
+
+def introducao ():
+
+    # music
+    musicFundo = pygame.mixer.music.load("data/introducao.mp3")
+    pygame.mixer.music.play(1, 0.0, 5000)
+    r = 30
+    g = 30
+    b = 30
+    aux = 0
+    auxR = True
+    auxG = True
+    auxB = True
+
+    gameLoopTela = True
+
+    while gameLoopTela:
+        clock.tick(60)
+
+        aux1 = random.randint(1, 3)
+        aux += 1
+#ver se esta dentro da faixa de cores
+        if r > 248:
+            auxR = False
+        if g > 248:
+            auxG = False
+        if b > 248:
+            auxB = False
+        if r < 20:
+            auxR = True
+        if g < 20:
+            auxG = True
+        if b < 20:
+            auxB = True
+
+#algoritmo para mudar as cores
+        if aux % 3 == 0 and auxR == True:
+            r += 5 + aux1
+        if aux % 3 == 0 and auxG == True:
+            g += 3 + aux1
+        if aux % 3 == 0 and auxB == True:
+            b += 4 + aux1
+        if aux % 3 == 0 and auxR == False:
+            r -= 4 - aux1
+        if aux % 3 == 0 and auxG == False:
+            g -= 5 - aux1
+        if aux % 3 == 0 and auxB == False:
+            b -= 3 - aux1
+
+        display.fill([r, g, b])
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            print("oi")
+            if event.type == pygame.QUIT:
+                #gameLoop = False
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if (event.key == pygame.K_SPACE):
+                    gameLoopTela = False
+                    print("oi")
 
 if __name__ == "__main__":
     while gameLoop:

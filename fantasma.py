@@ -87,7 +87,7 @@ class Fantasma(pygame.sprite.Sprite):
         else:
             self.volume_d = 0
             self.volume_e = 0
-            pygame.mixer.pause()
+            pygame.mixer.unpause()
 
         # vai definir de quanto em quanto tempo o jogo vai rodar
         self.aux += 1
