@@ -1,3 +1,3 @@
-# joguinho-do-vini-pra-sego
-joginho do vinicius
+# Sem Visão
+jogo do vinicius
 um jogo que so se baseia no som
