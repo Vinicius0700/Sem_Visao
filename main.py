@@ -40,8 +40,8 @@ def criaObject ():
     porta = Porta(player, objectGroup, portaGroup)
 
     chaves1 = Chave(player, objectGroup, chave1Group)
-    chaves1.rect.x = 270
-    chaves1.rect.y = 182
+    chaves1.rect.x = 366
+    chaves1.rect.y = 50
 
     chaves2 = Chave(player, objectGroup, chave2Group)
     chaves2.rect.x = 48

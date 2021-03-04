@@ -17,8 +17,8 @@ class Porta(pygame.sprite.Sprite):
         self.distancia_y = 0
         self.aux = 0
 
-        self.chavesom = pygame.mixer.Sound("data/Porta.mp3")
-        self.chavesom1 = pygame.mixer.Channel(5)
+        self.portasom = pygame.mixer.Sound("data/Porta.mp3")
+        self.portasom1 = pygame.mixer.Channel(5)
 
     def update(self, *args):
 
@@ -36,9 +36,9 @@ class Porta(pygame.sprite.Sprite):
                 self.volume_e = 1
 
             #solta o som aqui, ele temque soltar o om aqui para funcionar devidamente
-            self.chavesom1.set_volume(self.volume_e, self.volume_d)
+            self.portasom1.set_volume(self.volume_e, self.volume_d)
             if self.aux % 50 == 0:
-                self.chavesom1.play(self.chavesom)
+                self.portasom1.play(self.portasom)
 
             # pergunta se esta ao Sul do objeto
             if self.distancia_y > 0:
