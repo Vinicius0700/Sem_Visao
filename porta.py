@@ -37,7 +37,7 @@ class Porta(pygame.sprite.Sprite):
 
             #solta o som aqui, ele temque soltar o om aqui para funcionar devidamente
             self.chavesom1.set_volume(self.volume_e, self.volume_d)
-            if self.aux % 40 == 0:
+            if self.aux % 50 == 0:
                 self.chavesom1.play(self.chavesom)
 
             # pergunta se esta ao Sul do objeto
