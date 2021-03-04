@@ -1,3 +1,3 @@
 # Sem Visão
-jogo do vinicius
-um jogo que so se baseia no som
+jogo do vinicius.
+Um jogo que so se baseia no som
