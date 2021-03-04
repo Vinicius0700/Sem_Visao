@@ -15,6 +15,7 @@ pygame.display.set_caption("Joguinho do Vini") # Legenda do jogo
 
 gameLoop = True # variavel que define se o jogo vai continuar rodando ou não
 
+
 clock = pygame.time.Clock()
 
 def criaObject ():
@@ -97,7 +98,6 @@ def criaObject ():
     visao = False
     gameLoopTela = True
 
-
     while gameLoopTela:
         clock.tick(60)
 
@@ -106,7 +106,7 @@ def criaObject ():
         for event in pygame.event.get():
 
             if event.type == pygame.QUIT:
-                gameLoop = False
+                #gameLoop = False
                 exit()
             elif event.type == pygame.KEYDOWN:
                 if (event.key == pygame.K_l):
@@ -217,9 +217,38 @@ def criaObject ():
             objectGroup.draw(display)
         pygame.display.update()
 
+def introducao ():
+
+    # music
+    musicFundo = pygame.mixer.music.load("data/introducao.wav")
+    pygame.mixer.music.play(1, 0.0, 5000)
+
+    gameLoopTela = True
+
+    while gameLoopTela:
+
+        display.fill([40, 40, 40])
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                #gameLoop = False
+                exit()
+            elif event.type == pygame.KEYDOWN:
+                if (event.key == pygame.K_w or event.key == pygame.K_a or event.key == pygame.K_s or event.key == pygame.K_d):
+                    gameLoopTela = False
+
+
 
 
 
 if __name__ == "__main__":
     while gameLoop:
+        introducao()
         criaObject()
+
+
+
+#fugir = pygame.mixer.Sound("data/fugiu.wav")
+    #fugir1 = pygame.mixer.Channel(0)
+    #fugir1.set_volume(1)
+
