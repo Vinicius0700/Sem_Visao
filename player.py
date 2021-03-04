@@ -9,7 +9,7 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 30
         self.rect.y = 30
-        self.speed = 2
+        self.speed = 8
 
         self.aux = 0
         self.time = pygame.time.Clock()
@@ -23,6 +23,7 @@ class Player(pygame.sprite.Sprite):
     # Logica
     def update(self, *args):
         self.time.tick(60)
+        self.walk1.set_volume(0.6)
 
 
         keys = pygame.key.get_pressed()
@@ -51,12 +52,12 @@ class Player(pygame.sprite.Sprite):
         else:
             self.aux = 0
 
-        if self.rect.top < 20:
-            self.rect.top = 20
-        if self.rect.bottom > 640:
-            self.rect.bottom = 640
-        if self.rect.left < 20:
-            self.rect.left = 20
-        if self.rect.right > 800:
-            self.rect.right = 800
+        if self.rect.top < 18:
+            self.rect.top = 18
+        if self.rect.bottom > 638:
+            self.rect.bottom = 638
+        if self.rect.left < 18:
+            self.rect.left = 18
+        if self.rect.right > 798:
+            self.rect.right = 798
 

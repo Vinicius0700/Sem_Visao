@@ -33,11 +33,11 @@ def criaObject ():
     chave4Group = pygame.sprite.Group()
     portaGroup = pygame.sprite.Group()
 
-
+    # inicialização
     player = Player(playerGroup)
     fantasma = Fantasma(player, fantasmaGroup)
     bg = Backgroud(mapGroup)
-    porta = Porta(portaGroup)
+    porta = Porta(player, objectGroup, portaGroup)
 
     chaves1 = Chave(player, objectGroup, chave1Group)
     chaves1.rect.x = 270
@@ -62,20 +62,25 @@ def criaObject ():
     # sounds
 
     ai = pygame.mixer.Sound("data/ai.wav")
-    ai1 = pygame.mixer.Channel(0)
+    ai1 = pygame.mixer.Channel(2)
     ai1.set_volume(1)
 
     chave_insuficiente = pygame.mixer.Sound("data/chaveInsuficiente.wav")
-    chave_insuficiente1 = pygame.mixer.Channel(0)
+    chave_insuficiente1 = pygame.mixer.Channel(1)
     chave_insuficiente1.set_volume(1)
 
-    fugir = pygame.mixer.Sound("data/fugiu.wav")
-    fugir1 = pygame.mixer.Channel(0)
-    fugir1.set_volume(1)
+    pegou = pygame.mixer.Sound("data/pegou.mp3")
+    pegou1 = pygame.mixer.Channel(5)
+    pegou1.set_volume(1)
 
-    introducao = pygame.mixer.Sound("data/introducao.wav")
-    introducao1 = pygame.mixer.Channel(0)
-    introducao1.set_volume(1)
+
+    #fugir = pygame.mixer.Sound("data/fugiu.wav")
+    #fugir1 = pygame.mixer.Channel(0)
+    #fugir1.set_volume(1)
+
+    #introducao = pygame.mixer.Sound("data/introducao.wav")
+    #introducao1 = pygame.mixer.Channel(0)
+    #introducao1.set_volume(1)
 
     gameover = pygame.mixer.Sound("data/gameover.wav")
     gameover1 = pygame.mixer.Channel(0)
@@ -96,7 +101,7 @@ def criaObject ():
     while gameLoopTela:
         clock.tick(60)
 
-        introducao1.play(introducao)
+        #introducao1.play(introducao)
 
         for event in pygame.event.get():
 
@@ -140,21 +145,25 @@ def criaObject ():
         chave1colission = pygame.sprite.spritecollide(player, chave1Group, False, pygame.sprite.collide_mask)
         if chave1colission:
             chaves1.kill()
+            pegou1.play(pegou)
             quantchave -= 1
 
         chave2colission = pygame.sprite.spritecollide(player, chave2Group, False, pygame.sprite.collide_mask)
         if chave2colission:
             chaves2.kill()
+            pegou1.play(pegou)
             quantchave -= 1
 
         chave3colission = pygame.sprite.spritecollide(player, chave3Group, False, pygame.sprite.collide_mask)
         if chave3colission:
             chaves3.kill()
+            pegou1.play(pegou)
             quantchave -= 1
 
         chave4colission = pygame.sprite.spritecollide(player, chave4Group, False, pygame.sprite.collide_mask)
         if chave4colission:
             chaves4.kill()
+            pegou1.play(pegou)
             quantchave -= 1
 
         if quantchave == 0:
@@ -164,7 +173,7 @@ def criaObject ():
         if portacolission:
             player.rect.y = playery - 3
             if passarporta == True:
-                fugir1.play(fugir)
+                #fugir1.play(fugir)
                 gameLoopTela = False
                 print("Parabens voce zerou o jogo")
             elif passarporta == False:
